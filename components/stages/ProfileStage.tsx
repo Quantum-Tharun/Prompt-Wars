@@ -7,6 +7,7 @@ import { apiClient } from "@/lib/api/client";
 import careersCatalogue from "@/data/careers.json";
 import skillsCatalogue from "@/data/skills.json";
 import { formatProficiency } from "@/lib/format";
+import { type CareerId } from "@/lib/schemas/domain.schema";
 
 export function ProfileStage() {
   const { state, dispatch } = useSkillPath();
@@ -51,9 +52,10 @@ export function ProfileStage() {
       await apiClient.initProfile(updatedBackground, state.claims);
       dispatch({ type: "STOP_LOADING" });
       dispatch({ type: "SET_ACTIVE_STAGE", stage: 2 });
-    } catch (err: any) {
+    } catch (err: unknown) {
       dispatch({ type: "STOP_LOADING" });
-      alert(`Initialization error: ${err.message}`);
+      const msg = err instanceof Error ? err.message : String(err);
+      alert(`Initialization error: ${msg}`);
     }
   };
 
@@ -206,7 +208,7 @@ export function ProfileStage() {
               return (
                 <div
                   key={career.id}
-                  onClick={() => setTargetCareerId(career.id as any)}
+                  onClick={() => setTargetCareerId(career.id as CareerId)}
                   role="radio"
                   aria-checked={isSelected}
                   className={`p-4 border rounded-[4px] cursor-pointer transition-colors ${

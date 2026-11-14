@@ -14,6 +14,8 @@ import {
   type WeakTopicRecord,
   type AgentTraceEntry,
   type CareerId,
+  type CognitiveTier,
+  type ProficiencyLevel,
 } from "@/lib/schemas/domain.schema";
 import {
   type OrchestrationResponse,
@@ -344,7 +346,7 @@ function skillPathReducer(state: SkillPathState, action: SkillPathAction): Skill
         checkpointScore: action.payload.quizScore,
         failedWeakTopics: action.payload.failedWeakTopics.map((w) => ({
           ...w,
-          failedCognitiveTier: w.failedCognitiveTier as any,
+          failedCognitiveTier: w.failedCognitiveTier as CognitiveTier,
         })),
         roadmap: action.payload.mutatedRoadmap,
         insertedRemediationModule: action.payload.insertedModule,
@@ -397,7 +399,7 @@ function skillPathReducer(state: SkillPathState, action: SkillPathAction): Skill
               m.moduleId === action.moduleId
                 ? {
                     ...m,
-                    status: (isCompleted ? "unlocked" : "completed") as any,
+                    status: (isCompleted ? "unlocked" : "completed") as "unlocked" | "completed",
                   }
                 : m
             ),

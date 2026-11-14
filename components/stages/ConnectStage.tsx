@@ -6,6 +6,7 @@ import { StageFrame } from "@/components/shell/StageFrame";
 import { apiClient } from "@/lib/api/client";
 import { ApiError } from "@/lib/api/errors";
 import { formatProficiency } from "@/lib/format";
+import { type ProficiencyLevel } from "@/lib/schemas/domain.schema";
 import { type StagedCandidateSkill } from "@/lib/schemas/domain.schema";
 
 interface PlatformRowState {
@@ -64,12 +65,13 @@ export function ConnectStage() {
         },
       ]);
       dispatch({ type: "STOP_LOADING" });
-    } catch (err: any) {
+    } catch (err: unknown) {
       dispatch({ type: "STOP_LOADING" });
       if (err instanceof ApiError && err.status === 403) {
         setUnconsentedRefusedMessage("Nothing was read. Grant permission for each platform to continue.");
       } else {
-        setUnconsentedRefusedMessage(`Guardrail responded with: ${err.message}`);
+        const msg = err instanceof Error ? err.message : String(err);
+        setUnconsentedRefusedMessage(`Guardrail responded with: ${msg}`);
       }
     }
   };
@@ -88,9 +90,10 @@ export function ConnectStage() {
       dispatch({ type: "SET_STAGED_CANDIDATES", candidates: res.footprint.stagedCandidates });
       dispatch({ type: "STOP_LOADING" });
       setActiveSyncMessage(`Discovered ${res.footprint.stagedCandidates.length} candidate skills from consented platforms.`);
-    } catch (err: any) {
+    } catch (err: unknown) {
       dispatch({ type: "STOP_LOADING" });
-      alert(`Platform discovery failed: ${err.message}`);
+      const msg = err instanceof Error ? err.message : String(err);
+      alert(`Platform discovery failed: ${msg}`);
     }
   };
 
@@ -257,7 +260,7 @@ export function ConnectStage() {
                             dispatch({
                               type: "UPDATE_CANDIDATE_LEVEL",
                               skillId: c.skillId,
-                              level: e.target.value as any,
+                              level: e.target.value as ProficiencyLevel,
                             })
                           }
                           className="px-2 py-1 border border-[var(--rule)] bg-[var(--paper)] text-[var(--ink)] text-[12px] rounded-[2px]"

@@ -39,17 +39,18 @@ export function VerifyStage() {
         );
         dispatch({
           type: "SET_ASSESSMENT_QUESTIONS",
-          questionsBySkill: res.questionsBySkill as any,
-          allQuestions: res.allQuestions as any,
+          questionsBySkill: res.questionsBySkill,
+          allQuestions: res.allQuestions,
         });
         const firstSkill = Object.keys(res.questionsBySkill)[0] || "python";
         setActiveSkillId(firstSkill);
         setQuestionsLoaded(true);
         setStartTime(performance.now());
         dispatch({ type: "STOP_LOADING" });
-      } catch (err: any) {
+      } catch (err: unknown) {
         dispatch({ type: "STOP_LOADING" });
-        alert(`Failed to load questions: ${err.message}`);
+        const msg = err instanceof Error ? err.message : String(err);
+        alert(`Failed to load questions: ${msg}`);
       }
     }
     loadQuestions();
@@ -134,9 +135,10 @@ export function VerifyStage() {
       dispatch({ type: "SET_ORCHESTRATION_DATA", payload: res });
       dispatch({ type: "STOP_LOADING" });
       dispatch({ type: "SET_ACTIVE_STAGE", stage: 4 });
-    } catch (err: any) {
+    } catch (err: unknown) {
       dispatch({ type: "STOP_LOADING" });
-      alert(`Orchestration error: ${err.message}`);
+      const msg = err instanceof Error ? err.message : String(err);
+      alert(`Orchestration error: ${msg}`);
     }
   };
 
@@ -179,9 +181,10 @@ export function VerifyStage() {
       dispatch({ type: "SET_ORCHESTRATION_DATA", payload: res });
       dispatch({ type: "STOP_LOADING" });
       dispatch({ type: "SET_ACTIVE_STAGE", stage: 4 });
-    } catch (err: any) {
+    } catch (err: unknown) {
       dispatch({ type: "STOP_LOADING" });
-      alert(`Demo orchestration error: ${err.message}`);
+      const msg = err instanceof Error ? err.message : String(err);
+      alert(`Demo orchestration error: ${msg}`);
     }
   };
 

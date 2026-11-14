@@ -37,8 +37,8 @@ export function PresenterStrip() {
     try {
       const res = await apiClient.runSelfTest();
       setTestResults(res);
-    } catch (err: any) {
-      setTestError(err.message || "Failed to execute server assertion suite.");
+    } catch (err: unknown) {
+      setTestError(err instanceof Error ? err.message : "Failed to execute server assertion suite.");
     } finally {
       setIsRunningTest(false);
     }

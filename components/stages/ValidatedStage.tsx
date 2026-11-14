@@ -10,6 +10,7 @@ import { DecryptedText } from "@/components/motion/DecryptedText";
 import { formatArchetype, formatProficiency } from "@/lib/format";
 import careersCatalogue from "@/data/careers.json";
 import skillsCatalogue from "@/data/skills.json";
+import { type ProficiencyLevel } from "@/lib/schemas/domain.schema";
 
 export function ValidatedStage() {
   const { state, dispatch } = useSkillPath();
@@ -149,7 +150,7 @@ export function ValidatedStage() {
                   skillName={s.skillName}
                   claimedLevel={s.selfReportedLevel}
                   validatedLevel={s.validatedLevel}
-                  requiredLevel={(req?.requiredLevel as any) || "intermediate"}
+                  requiredLevel={(req?.requiredLevel as ProficiencyLevel) || "intermediate"}
                   calibrationDelta={s.calibrationDelta}
                   assessmentScore={s.assessmentScore}
                 />

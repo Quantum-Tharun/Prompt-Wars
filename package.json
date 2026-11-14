@@ -11,6 +11,7 @@
     "dev": "next dev",
     "build": "next build --webpack",
     "start": "next start",
+    "test": "node --test test/engines.test.mjs && node scripts/validate-questions.mjs && node scripts/verify-integration.mjs",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

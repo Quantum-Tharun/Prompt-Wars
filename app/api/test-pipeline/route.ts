@@ -6,6 +6,7 @@ import {
   type LearnerBackground,
   type SelfReportedSkillClaim,
   type PlatformConsentEnvelope,
+  type CognitiveTier,
 } from "@/lib/schemas/domain.schema";
 import { getQuestionsCatalogue } from "@/lib/data-loader";
 import {
@@ -352,7 +353,7 @@ export async function GET() {
     const jsQuestionMap = new Map(jsAssessmentQuestions.map((q) => [q.id, q]));
     let jsWeightedSum = 0;
     let jsTotalWeight = 0;
-    const jsWeakTopics: { topicTag: string; failedCognitiveTier: any; questionId: string }[] = [];
+    const jsWeakTopics: { topicTag: string; failedCognitiveTier: CognitiveTier; questionId: string }[] = [];
 
     for (const ans of jsFailedAnswers) {
       const q = jsQuestionMap.get(ans.questionId);

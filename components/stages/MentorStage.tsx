@@ -64,9 +64,10 @@ export function MentorStage() {
       dispatch({ type: "SET_MENTOR_ADAPT_DATA", payload: res });
       dispatch({ type: "STOP_LOADING" });
       setFailingSimulated(true);
-    } catch (err: any) {
+    } catch (err: unknown) {
       dispatch({ type: "STOP_LOADING" });
-      alert(`Adaptation error: ${err.message}`);
+      const msg = err instanceof Error ? err.message : String(err);
+      alert(`Adaptation error: ${msg}`);
     }
   };
 
@@ -99,9 +100,10 @@ export function MentorStage() {
       dispatch({ type: "SET_MENTOR_VERIFY_DATA", payload: res });
       dispatch({ type: "STOP_LOADING" });
       setRecoverySimulated(true);
-    } catch (err: any) {
+    } catch (err: unknown) {
       dispatch({ type: "STOP_LOADING" });
-      alert(`Recovery verification error: ${err.message}`);
+      const msg = err instanceof Error ? err.message : String(err);
+      alert(`Recovery verification error: ${msg}`);
     }
   };
 

@@ -8,10 +8,11 @@ import { PrerequisiteRail } from "@/components/viz/PrerequisiteRail";
 import { CountUpNumber } from "@/components/motion/CountUpNumber";
 import careersCatalogue from "@/data/careers.json";
 import { formatProficiency } from "@/lib/format";
+import { type CareerId } from "@/lib/schemas/domain.schema";
 
 export function SwitchStage() {
   const { state, dispatch } = useSkillPath();
-  const [selectedTarget, setSelectedTarget] = useState<string>("data_analyst");
+  const [selectedTarget, setSelectedTarget] = useState<CareerId>("data_analyst");
 
   if (state.validatedSkills.length === 0) {
     return (
@@ -51,14 +52,15 @@ export function SwitchStage() {
         state.background,
         state.validatedSkills,
         state.background.targetCareerId,
-        selectedTarget as any
+        selectedTarget
       );
 
       dispatch({ type: "SET_CAREER_PIVOT_DATA", payload: res });
       dispatch({ type: "STOP_LOADING" });
-    } catch (err: any) {
+    } catch (err: unknown) {
       dispatch({ type: "STOP_LOADING" });
-      alert(`Career pivot calculation error: ${err.message}`);
+      const msg = err instanceof Error ? err.message : String(err);
+      alert(`Career pivot calculation error: ${msg}`);
     }
   };
 
@@ -91,7 +93,7 @@ export function SwitchStage() {
               return (
                 <div
                   key={c.id}
-                  onClick={() => setSelectedTarget(c.id)}
+                  onClick={() => setSelectedTarget(c.id as CareerId)}
                   className={`p-3.5 border rounded-[4px] cursor-pointer transition-colors ${
                     isSelected
                       ? "border-[2px] border-[var(--ink)] bg-[var(--paper)]"
