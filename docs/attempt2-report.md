@@ -40,13 +40,23 @@
 - `lib/store/skillpath-store.tsx`: Added `completedModuleIds` state, `TOGGLE_MODULE_COMPLETION` action, and support for 8 learner stages.
 - `package.json`: Configured `"build": "next build --webpack"` and `"engines": { "node": ">=20.0.0" }`.
 
-### Verification Scripts
-- `scripts/validate-questions.mjs` *(NEW)*: Strict audit verifying ID uniqueness, referential integrity against `skills.json`, tier distribution, option count, and explanations.
-- `scripts/verify-integration.mjs` *(NEW)*: Complete referential integrity test for all 4 catalogues + live HTTP pipeline probe.
+### Verification & Automated Testing
+- `test/engines.test.mjs` *(NEW)*: Native Node.js `node:test` suite with 15 assertion tests across 7 suites covering scoring math, cognitive weights (1x, 2x, 3x), latency anomaly detection (<4000ms), archetype triangulation, career gap matrix, zero-loss pivot capital transfer, and question distributions.
+- `package.json`: Wired `"test"` script running `node --test test/engines.test.mjs && node scripts/validate-questions.mjs && node scripts/verify-integration.mjs`.
+- `scripts/validate-questions.mjs`: Strict audit verifying ID uniqueness, referential integrity against `skills.json`, tier distribution, option count, and explanations.
+- `scripts/verify-integration.mjs`: Complete referential integrity test for all 4 catalogues + live HTTP pipeline probe.
 
 ---
 
 ## 3. Test & Pre-Push Gate Results
+
+- **`npx tsc --noEmit`**: PASSED (0 errors, 100% strict type safety, zero `any` types across `app/`, `components/`, and `lib/`).
+- **`npm test`**: PASSED (15/15 unit tests passed, 68/68 questions verified, 100% catalogue referential integrity).
+- **`npm run build`**: PASSED (14 static pages generated in 12.9s with Webpack; exit code 0).
+- **`GET /api/test-pipeline`**: PASSED (10 of 10 automated assertion stages passed; `allAssertionsPassed: true`).
+- **Strict UI Constraints**: VERIFIED (zero gradients, zero emojis, zero blur/glow, zero drop shadows, zero blue/purple, zero `rounded-full`).
+- **Git Push Remote**: Cleanly committed and pushed to `https://github.com/Quantum-Tharun/Prompt-Wars.git` on `main` (commit `afed891`).
+- **Rollback Protection**: Preserved on GitHub via tag `attempt-1-93.19` and branch `backup/attempt-1`.
 
 | Pre-Push Gate | Command | Result | Evidence / Notes |
 | :--- | :--- | :--- | :--- |
