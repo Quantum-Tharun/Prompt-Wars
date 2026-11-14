@@ -1,0 +1,130 @@
+[
+  {
+    "id": "python",
+    "name": "Python",
+    "category": "programming_languages",
+    "description": "Core general-purpose language for scripting, data analysis, and backend engineering.",
+    "microTopics": [
+      { "tag": "py_data_types", "label": "Data Types & Variables", "foundational": true },
+      { "tag": "py_control_flow", "label": "Control Flow & Loops", "foundational": true },
+      { "tag": "py_functions", "label": "Functions & Scope", "foundational": true },
+      { "tag": "py_collections", "label": "Lists, Dictionaries & Sets", "foundational": false },
+      { "tag": "py_oop", "label": "Object-Oriented Programming & Classes", "foundational": false },
+      { "tag": "py_exceptions", "label": "Exception & Error Handling", "foundational": false }
+    ]
+  },
+  {
+    "id": "javascript",
+    "name": "JavaScript",
+    "category": "programming_languages",
+    "description": "Dynamic web scripting language powering browser runtimes and server ecosystems.",
+    "microTopics": [
+      { "tag": "js_functions_scope", "label": "Functions, Closures & Scope", "foundational": true },
+      { "tag": "js_arrays_objects", "label": "Array Manipulation & Object Prototypes", "foundational": true },
+      { "tag": "js_dom", "label": "DOM Manipulation & Browser Events", "foundational": false },
+      { "tag": "js_async_promises", "label": "Asynchronous Programming, Promises & Event Loop", "foundational": false }
+    ]
+  },
+  {
+    "id": "sql",
+    "name": "SQL & Relational Databases",
+    "category": "databases",
+    "description": "Declarative relational data querying, aggregation, schema design, and relational algebra.",
+    "microTopics": [
+      { "tag": "sql_select_filter", "label": "Basic SELECT, WHERE & Filtering", "foundational": true },
+      { "tag": "sql_aggregation", "label": "GROUP BY, HAVING & Aggregation Functions", "foundational": true },
+      { "tag": "sql_joins", "label": "INNER, LEFT, RIGHT & Full Relational Joins", "foundational": false },
+      { "tag": "sql_subqueries", "label": "Subqueries, CTEs & Window Functions", "foundational": false }
+    ]
+  },
+  {
+    "id": "html",
+    "name": "HTML5",
+    "category": "web_development",
+    "description": "Semantic markup, accessibility standards, document structure, and forms.",
+    "microTopics": [
+      { "tag": "html_semantics", "label": "Semantic Elements & Accessibility", "foundational": true },
+      { "tag": "html_forms", "label": "Forms, Inputs & Validation Attributes", "foundational": true },
+      { "tag": "html_dom_structure", "label": "Document Hierarchy & Tree Structure", "foundational": false }
+    ]
+  },
+  {
+    "id": "css",
+    "name": "CSS3",
+    "category": "web_development",
+    "description": "Cascading style sheets, responsive layouts, flexbox, grid, and animations.",
+    "microTopics": [
+      { "tag": "css_box_model", "label": "Box Model, Margins, Borders & Padding", "foundational": true },
+      { "tag": "css_flexbox_grid", "label": "Flexbox & CSS Grid Layouts", "foundational": true },
+      { "tag": "css_responsive", "label": "Media Queries & Responsive Units", "foundational": false }
+    ]
+  },
+  {
+    "id": "react",
+    "name": "React",
+    "category": "web_development",
+    "description": "Declarative component-driven user interface framework and state management.",
+    "microTopics": [
+      { "tag": "react_components_props", "label": "Components, JSX & Props", "foundational": true },
+      { "tag": "react_hooks_state", "label": "Hooks (useState, useReducer) & State Lifecycle", "foundational": true },
+      { "tag": "react_effects_api", "label": "Side Effects (useEffect) & API Fetching", "foundational": false },
+      { "tag": "react_routing", "label": "Client-Side Routing & Navigation", "foundational": false }
+    ]
+  },
+  {
+    "id": "nodejs",
+    "name": "Node.js & Express",
+    "category": "web_development",
+    "description": "Server-side JavaScript runtime, event loop, middleware pipelines, and HTTP servers.",
+    "microTopics": [
+      { "tag": "node_runtime_modules", "label": "Node Runtime, CommonJS & ESM Modules", "foundational": true },
+      { "tag": "node_express_middleware", "label": "Express App Routing & Custom Middleware", "foundational": true },
+      { "tag": "node_async_io", "label": "Streams, File System & Non-blocking I/O", "foundational": false }
+    ]
+  },
+  {
+    "id": "rest_apis",
+    "name": "RESTful API Design",
+    "category": "web_development",
+    "description": "Stateless architectural principles, HTTP methods, status codes, and JSON schemas.",
+    "microTopics": [
+      { "tag": "api_http_methods", "label": "HTTP Verbs, Idempotence & Safe Methods", "foundational": true },
+      { "tag": "api_status_auth", "label": "HTTP Status Codes & Token Authentication", "foundational": true },
+      { "tag": "api_json_schemas", "label": "JSON Payloads, Validation & Error Schemas", "foundational": false }
+    ]
+  },
+  {
+    "id": "statistics",
+    "name": "Applied Statistics & Probability",
+    "category": "ai_data_science",
+    "description": "Descriptive measures, distributions, probability theory, and inferential hypothesis testing.",
+    "microTopics": [
+      { "tag": "stats_descriptive", "label": "Central Tendency, Variance & Standard Deviation", "foundational": true },
+      { "tag": "stats_probability", "label": "Probability Distributions & Bayes Theorem", "foundational": true },
+      { "tag": "stats_hypothesis_testing", "label": "P-values, Confidence Intervals & Hypothesis Testing", "foundational": false }
+    ]
+  },
+  {
+    "id": "pandas",
+    "name": "Pandas & Data Wrangling",
+    "category": "ai_data_science",
+    "description": "Tabular data structures, transformations, indexing, merging, and missing data imputation.",
+    "microTopics": [
+      { "tag": "pd_dataframes", "label": "Series, DataFrames & Column Operations", "foundational": true },
+      { "tag": "pd_groupby_merge", "label": "GroupBy Aggregations & Table Merging", "foundational": true },
+      { "tag": "pd_cleaning", "label": "Handling Missing Data, Types & Duplicates", "foundational": false }
+    ]
+  },
+  {
+    "id": "machine_learning",
+    "name": "Machine Learning Fundamentals",
+    "category": "ai_data_science",
+    "description": "Supervised algorithms, feature engineering, cross-validation, and performance metrics.",
+    "microTopics": [
+      { "tag": "ml_supervised", "label": "Linear/Logistic Regression & Decision Trees", "foundational": true },
+      { "tag": "ml_evaluation_metrics", "label": "Precision, Recall, F1-Score & ROC-AUC", "foundational": true },
+      { "tag": "ml_feature_engineering", "label": "Feature Scaling, Encoding & Train/Test Splits", "foundational": false }
+    ]
+  }
+]
+

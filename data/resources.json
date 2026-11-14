@@ -1,0 +1,267 @@
+[
+  {
+    "id": "res_py_1",
+    "skillId": "python",
+    "topicTags": ["py_data_types", "py_control_flow", "py_functions"],
+    "title": "Official Python 3 Tutorial: Core Syntax, Data Structures & Control Flow",
+    "provider": "Python Software Foundation",
+    "type": "documentation",
+    "url": "https://docs.python.org/3/tutorial/index.html",
+    "targetLevel": "beginner",
+    "estimatedHours": 6
+  },
+  {
+    "id": "res_py_2",
+    "skillId": "python",
+    "topicTags": ["py_collections", "py_oop", "py_exceptions"],
+    "title": "Python Data Model, Object-Oriented Patterns & Exception Architecture",
+    "provider": "Real Python",
+    "type": "interactive_tutorial",
+    "url": "https://realpython.com/learning-paths/python3-data-structures-and-algorithms/",
+    "targetLevel": "intermediate",
+    "estimatedHours": 10
+  },
+  {
+    "id": "res_js_1",
+    "skillId": "javascript",
+    "topicTags": ["js_functions_scope", "js_arrays_objects"],
+    "title": "MDN JavaScript Guide: Closures, Lexical Scope & Array Transformations",
+    "provider": "Mozilla Developer Network (MDN)",
+    "type": "documentation",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide",
+    "targetLevel": "beginner",
+    "estimatedHours": 8
+  },
+  {
+    "id": "res_js_2",
+    "skillId": "javascript",
+    "topicTags": ["js_async_promises", "js_dom"],
+    "title": "JavaScript.info: Asynchronous Microtasks, Promises & Event Loop Architecture",
+    "provider": "JavaScript.info",
+    "type": "interactive_tutorial",
+    "url": "https://javascript.info/async",
+    "targetLevel": "intermediate",
+    "estimatedHours": 10
+  },
+  {
+    "id": "res_js_3",
+    "skillId": "javascript",
+    "topicTags": ["js_functions_scope", "js_arrays_objects", "js_async_promises"],
+    "title": "Deep JavaScript Foundations & V8 Engine Internals",
+    "provider": "Frontend Masters",
+    "type": "video_course",
+    "url": "https://frontendmasters.com/courses/deep-javascript-v3/",
+    "targetLevel": "advanced",
+    "estimatedHours": 12
+  },
+  {
+    "id": "res_sql_1",
+    "skillId": "sql",
+    "topicTags": ["sql_select_filter", "sql_aggregation"],
+    "title": "SQLBolt: Interactive Foundational SQL Syntax, Filtering & Aggregations",
+    "provider": "SQLBolt",
+    "type": "interactive_tutorial",
+    "url": "https://sqlbolt.com/",
+    "targetLevel": "beginner",
+    "estimatedHours": 5
+  },
+  {
+    "id": "res_sql_2",
+    "skillId": "sql",
+    "topicTags": ["sql_joins", "sql_subqueries"],
+    "title": "PostgreSQL Documentation: Relational Joins, Window Functions & CTEs",
+    "provider": "PostgreSQL Global Development Group",
+    "type": "documentation",
+    "url": "https://www.postgresql.org/docs/current/queries-table-expressions.html",
+    "targetLevel": "intermediate",
+    "estimatedHours": 8
+  },
+  {
+    "id": "res_sql_3",
+    "skillId": "sql",
+    "topicTags": ["sql_subqueries", "sql_joins"],
+    "title": "Advanced Relational Algebra & Analytical Window Functions Practice",
+    "provider": "Mode Analytics",
+    "type": "practice_lab",
+    "url": "https://mode.com/sql-tutorial/sql-window-functions/",
+    "targetLevel": "advanced",
+    "estimatedHours": 9
+  },
+  {
+    "id": "res_html_1",
+    "skillId": "html",
+    "topicTags": ["html_semantics", "html_dom_structure"],
+    "title": "MDN Web Docs: Semantic HTML5 Elements & Document Hierarchy",
+    "provider": "Mozilla Developer Network (MDN)",
+    "type": "documentation",
+    "url": "https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML",
+    "targetLevel": "beginner",
+    "estimatedHours": 4
+  },
+  {
+    "id": "res_html_2",
+    "skillId": "html",
+    "topicTags": ["html_forms"],
+    "title": "HTML5 Forms, Constraint Validation & Accessibility Standards",
+    "provider": "web.dev by Google",
+    "type": "interactive_tutorial",
+    "url": "https://web.dev/learn/forms/",
+    "targetLevel": "intermediate",
+    "estimatedHours": 5
+  },
+  {
+    "id": "res_css_1",
+    "skillId": "css",
+    "topicTags": ["css_box_model", "css_flexbox_grid"],
+    "title": "CSS-Tricks: Comprehensive Guide to Flexbox & CSS Grid Layouts",
+    "provider": "CSS-Tricks",
+    "type": "documentation",
+    "url": "https://css-tricks.com/snippets/css/a-guide-to-flexbox/",
+    "targetLevel": "beginner",
+    "estimatedHours": 6
+  },
+  {
+    "id": "res_css_2",
+    "skillId": "css",
+    "topicTags": ["css_responsive"],
+    "title": "web.dev: Responsive Layout Architecture & Modern Media Queries",
+    "provider": "web.dev by Google",
+    "type": "interactive_tutorial",
+    "url": "https://web.dev/learn/design/",
+    "targetLevel": "intermediate",
+    "estimatedHours": 6
+  },
+  {
+    "id": "res_react_1",
+    "skillId": "react",
+    "topicTags": ["react_components_props", "react_hooks_state"],
+    "title": "React.dev: Describing UI, Managing State & Component Lifecycles",
+    "provider": "React Core Team",
+    "type": "documentation",
+    "url": "https://react.dev/learn",
+    "targetLevel": "beginner",
+    "estimatedHours": 8
+  },
+  {
+    "id": "res_react_2",
+    "skillId": "react",
+    "topicTags": ["react_effects_api", "react_routing"],
+    "title": "React.dev: Escape Hatches, Side Effects & Data Fetching Architecture",
+    "provider": "React Core Team",
+    "type": "interactive_tutorial",
+    "url": "https://react.dev/learn/synchronizing-with-effects",
+    "targetLevel": "intermediate",
+    "estimatedHours": 10
+  },
+  {
+    "id": "res_node_1",
+    "skillId": "nodejs",
+    "topicTags": ["node_runtime_modules", "node_express_middleware"],
+    "title": "Express.js Routing, Middleware Chains & Error Handling Architecture",
+    "provider": "Expressjs.com",
+    "type": "documentation",
+    "url": "https://expressjs.com/en/guide/routing.html",
+    "targetLevel": "beginner",
+    "estimatedHours": 7
+  },
+  {
+    "id": "res_node_2",
+    "skillId": "nodejs",
+    "topicTags": ["node_async_io"],
+    "title": "Node.js Streams & Non-Blocking Asynchronous I/O Guide",
+    "provider": "Node.js Core Team",
+    "type": "interactive_tutorial",
+    "url": "https://nodejs.org/api/stream.html",
+    "targetLevel": "intermediate",
+    "estimatedHours": 8
+  },
+  {
+    "id": "res_api_1",
+    "skillId": "rest_apis",
+    "topicTags": ["api_http_methods", "api_status_auth"],
+    "title": "MDN Web Docs: HTTP Architecture, Status Codes & REST Conventions",
+    "provider": "Mozilla Developer Network (MDN)",
+    "type": "documentation",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods",
+    "targetLevel": "beginner",
+    "estimatedHours": 5
+  },
+  {
+    "id": "res_api_2",
+    "skillId": "rest_apis",
+    "topicTags": ["api_json_schemas"],
+    "title": "RESTful API Architectural Constraints & Payload Contract Validation",
+    "provider": "REST API Tutorial",
+    "type": "documentation",
+    "url": "https://restfulapi.net/",
+    "targetLevel": "intermediate",
+    "estimatedHours": 6
+  },
+  {
+    "id": "res_stats_1",
+    "skillId": "statistics",
+    "topicTags": ["stats_descriptive", "stats_probability"],
+    "title": "Khan Academy: Descriptive Statistics & Probability Distributions",
+    "provider": "Khan Academy",
+    "type": "practice_lab",
+    "url": "https://www.khanacademy.org/math/statistics-probability",
+    "targetLevel": "beginner",
+    "estimatedHours": 9
+  },
+  {
+    "id": "res_stats_2",
+    "skillId": "statistics",
+    "topicTags": ["stats_hypothesis_testing"],
+    "title": "PennState STAT 500: Applied Statistical Inference & Hypothesis Testing",
+    "provider": "Penn State University",
+    "type": "documentation",
+    "url": "https://online.stat.psu.edu/stat500/",
+    "targetLevel": "intermediate",
+    "estimatedHours": 12
+  },
+  {
+    "id": "res_pd_1",
+    "skillId": "pandas",
+    "topicTags": ["pd_dataframes", "pd_cleaning"],
+    "title": "Pandas User Guide: 10 Minutes to pandas & DataFrame Manipulation",
+    "provider": "Pandas Development Team",
+    "type": "documentation",
+    "url": "https://pandas.pydata.org/docs/user_guide/10min.html",
+    "targetLevel": "beginner",
+    "estimatedHours": 6
+  },
+  {
+    "id": "res_pd_2",
+    "skillId": "pandas",
+    "topicTags": ["pd_groupby_merge"],
+    "title": "Pandas User Guide: GroupBy Aggregations, Merging & Relational Joins",
+    "provider": "Pandas Development Team",
+    "type": "interactive_tutorial",
+    "url": "https://pandas.pydata.org/docs/user_guide/groupby.html",
+    "targetLevel": "intermediate",
+    "estimatedHours": 8
+  },
+  {
+    "id": "res_ml_1",
+    "skillId": "machine_learning",
+    "topicTags": ["ml_supervised", "ml_feature_engineering"],
+    "title": "scikit-learn User Guide: Supervised Models, Ensembles & Preprocessing",
+    "provider": "scikit-learn Developers",
+    "type": "documentation",
+    "url": "https://scikit-learn.org/stable/user_guide.html",
+    "targetLevel": "intermediate",
+    "estimatedHours": 12
+  },
+  {
+    "id": "res_ml_2",
+    "skillId": "machine_learning",
+    "topicTags": ["ml_evaluation_metrics"],
+    "title": "Google Machine Learning Crash Course: Classification & Evaluation Metrics",
+    "provider": "Google Developers",
+    "type": "interactive_tutorial",
+    "url": "https://developers.google.com/machine-learning/crash-course/classification/true-false-positive-negative",
+    "targetLevel": "intermediate",
+    "estimatedHours": 8
+  }
+]
+

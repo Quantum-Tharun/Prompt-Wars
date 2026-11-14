@@ -1,0 +1,599 @@
+[
+  {
+    "id": "py_q1",
+    "skillId": "python",
+    "topicTag": "py_data_types",
+    "difficulty": "beginner",
+    "cognitiveTier": "syntax_recall",
+    "prompt": "Which of the following built-in data types in Python is immutable?",
+    "codeSnippet": "a = [1, 2, 3]\nb = {'key': 'val'}\nc = (1, 2, 3)\nd = {1, 2, 3}",
+    "options": ["List (a)", "Dictionary (b)", "Tuple (c)", "Set (d)"],
+    "correctIndex": 2,
+    "explanation": "Tuples in Python are immutable sequence objects; once constructed, their elements cannot be reassigned, added, or removed."
+  },
+  {
+    "id": "py_q2",
+    "skillId": "python",
+    "topicTag": "py_control_flow",
+    "difficulty": "intermediate",
+    "cognitiveTier": "scenario_debugging",
+    "prompt": "What does the following snippet print when executed?",
+    "codeSnippet": "vals = [1, 2, 3, 4]\nres = 0\nfor i, v in enumerate(vals):\n    if i % 2 == 0:\n        res += v * 2\n    else:\n        res -= v\nprint(res)",
+    "options": ["2", "4", "6", "8"],
+    "correctIndex": 0,
+    "explanation": "Tracing: i=0, v=1 -> res = 0 + 2 = 2; i=1, v=2 -> res = 2 - 2 = 0; i=2, v=3 -> res = 0 + 6 = 6; i=3, v=4 -> res = 6 - 4 = 2. Final output is 2."
+  },
+  {
+    "id": "py_q3",
+    "skillId": "python",
+    "topicTag": "py_functions",
+    "difficulty": "intermediate",
+    "cognitiveTier": "scenario_debugging",
+    "prompt": "What is the output of calling compute() in this snippet involving Python closures?",
+    "codeSnippet": "def make_multiplier(factor):\n    def multiply(val):\n        return val * factor\n    return multiply\n\ndouble = make_multiplier(2)\ntriple = make_multiplier(3)\nprint(double(triple(4)))",
+    "options": ["12", "18", "24", "48"],
+    "correctIndex": 2,
+    "explanation": "triple(4) executes 4 * 3 = 12. Then double(12) executes 12 * 2 = 24."
+  },
+  {
+    "id": "py_q4",
+    "skillId": "python",
+    "topicTag": "py_collections",
+    "difficulty": "advanced",
+    "cognitiveTier": "syntax_recall",
+    "prompt": "A developer observes unexpected data sharing between calls. What is causing this bug?",
+    "codeSnippet": "def append_to_cache(item, cache=[]):\n    cache.append(item)\n    return cache\n\na = append_to_cache(1)\nb = append_to_cache(2)\nprint(a)",
+    "options": [
+      "Python variables are passed strictly by value.",
+      "Default argument expressions are evaluated once at function definition time, reusing the same list instance.",
+      "Lists cannot be returned from nested functions without copying.",
+      "append() creates a new list in local memory."
+    ],
+    "correctIndex": 1,
+    "explanation": "Default parameter values in Python are evaluated once when the function is defined. A mutable default like `cache=[]` persists across successive invocations."
+  },
+  {
+    "id": "py_q5",
+    "skillId": "python",
+    "topicTag": "py_oop",
+    "difficulty": "advanced",
+    "cognitiveTier": "syntax_recall",
+    "prompt": "What is the Method Resolution Order (MRO) output in this multiple inheritance scenario?",
+    "codeSnippet": "class A:\n    def ping(self): return 'A'\nclass B(A):\n    def ping(self): return 'B'\nclass C(A):\n    def ping(self): return 'C'\nclass D(B, C):\n    pass\n\nprint(D().ping())",
+    "options": ["A", "B", "C", "D"],
+    "correctIndex": 1,
+    "explanation": "Python uses the C3 Linearization algorithm. For class D(B, C), the search order is D -> B -> C -> A -> object. D does not implement ping(), so B's implementation is invoked first."
+  },
+  {
+    "id": "js_q1",
+    "skillId": "javascript",
+    "topicTag": "js_functions_scope",
+    "difficulty": "beginner",
+    "cognitiveTier": "syntax_recall",
+    "prompt": "Which declaration keyword has block scope and prevents variable hoisting from accessing it before initialization due to the Temporal Dead Zone (TDZ)?",
+    "codeSnippet": "function test() {\n    // console.log(x); -> ReferenceError\n    let x = 10;\n}",
+    "options": ["var", "let", "function", "window"],
+    "correctIndex": 1,
+    "explanation": "`let` and `const` provide block scoping and reside in a Temporal Dead Zone from the start of the block until the declaration statement is evaluated."
+  },
+  {
+    "id": "js_q2",
+    "skillId": "javascript",
+    "topicTag": "js_arrays_objects",
+    "difficulty": "intermediate",
+    "cognitiveTier": "code_tracing",
+    "prompt": "What does the following array method pipeline evaluate to?",
+    "codeSnippet": "const nums = [1, 2, 3, 4, 5];\nconst result = nums\n  .filter(n => n % 2 !== 0)\n  .map(n => n * n)\n  .reduce((acc, curr) => acc + curr, 0);\nconsole.log(result);",
+    "options": ["25", "35", "55", "10"],
+    "correctIndex": 1,
+    "explanation": "filter keeps odd numbers [1, 3, 5]. map squares each to [1, 9, 25]. reduce sums them: 1 + 9 + 25 = 35."
+  },
+  {
+    "id": "js_q3",
+    "skillId": "javascript",
+    "topicTag": "js_dom",
+    "difficulty": "intermediate",
+    "cognitiveTier": "code_tracing",
+    "prompt": "In what order are the click events dispatched in this DOM tree under standard event bubbling?",
+    "codeSnippet": "// <div id=\"parent\"><button id=\"child\">Click</button></div>\nparent.addEventListener('click', () => log('parent'), false);\nchild.addEventListener('click', () => log('child'), false);",
+    "options": ["parent then child", "child then parent", "parent only", "both fire simultaneously"],
+    "correctIndex": 1,
+    "explanation": "With `useCapture: false` (the default), event handlers run during the bubbling phase, starting at the target element (`child`) and propagating upward to ancestors (`parent`)."
+  },
+  {
+    "id": "js_q4",
+    "skillId": "javascript",
+    "topicTag": "js_async_promises",
+    "difficulty": "advanced",
+    "cognitiveTier": "scenario_debugging",
+    "prompt": "What is the exact logged order of outputs according to JavaScript's microtask and macrotask event loop?",
+    "codeSnippet": "console.log('1');\nsetTimeout(() => console.log('2'), 0);\nPromise.resolve().then(() => console.log('3'));\nconsole.log('4');",
+    "options": ["1, 2, 3, 4", "1, 4, 2, 3", "1, 4, 3, 2", "1, 3, 4, 2"],
+    "correctIndex": 2,
+    "explanation": "Synchronous script runs first: prints '1' and '4'. Before taking the next macrotask (setTimeout), the event loop drains the microtask queue: Promise callback prints '3'. Finally, macrotask prints '2'."
+  },
+  {
+    "id": "js_q5",
+    "skillId": "javascript",
+    "topicTag": "js_functions_scope",
+    "difficulty": "advanced",
+    "cognitiveTier": "scenario_debugging",
+    "prompt": "Why does this asynchronous loop print '3, 3, 3' instead of '0, 1, 2', and what is the surgical fix?",
+    "codeSnippet": "for (var i = 0; i < 3; i++) {\n    setTimeout(() => console.log(i), 100);\n}",
+    "options": [
+      "`var` creates a function-scoped binding shared across all iterations; replace `var` with `let`.",
+      "The setTimeout delay is too short; increase delay to 1000ms.",
+      "Arrow functions cannot access outer variables; rewrite using standard function keyword.",
+      "The event loop discards index variables after loops terminate."
+    ],
+    "correctIndex": 0,
+    "explanation": "`var` is function-scoped, so a single shared binding of `i` exists and reaches 3 before callbacks run. Changing to `let` creates a distinct lexical binding for each loop iteration."
+  },
+  {
+    "id": "sql_q1",
+    "skillId": "sql",
+    "topicTag": "sql_select_filter",
+    "difficulty": "beginner",
+    "cognitiveTier": "scenario_debugging",
+    "prompt": "Which SQL clause is used to filter records prior to any aggregation taking place?",
+    "codeSnippet": "SELECT dept_id, COUNT(*)\nFROM employees\n/* filter condition */\nGROUP BY dept_id;",
+    "options": ["HAVING", "WHERE", "ORDER BY", "QUALIFY"],
+    "correctIndex": 1,
+    "explanation": "The `WHERE` clause filters rows before aggregation. In contrast, `HAVING` filters aggregated groups after the `GROUP BY` operation."
+  },
+  {
+    "id": "sql_q2",
+    "skillId": "sql",
+    "topicTag": "sql_aggregation",
+    "difficulty": "intermediate",
+    "cognitiveTier": "code_tracing",
+    "prompt": "What does the following query return from the transactions table?",
+    "codeSnippet": "SELECT customer_id, AVG(amount) as avg_spend\nFROM transactions\nGROUP BY customer_id\nHAVING COUNT(*) >= 2 AND AVG(amount) > 100;",
+    "options": [
+      "All customers with at least 2 transactions regardless of average spend.",
+      "Customers who have at least 2 transactions and whose average transaction amount exceeds 100.",
+      "Transactions whose individual amount is over 100 grouped by customer.",
+      "The top 2 highest spending customers."
+    ],
+    "correctIndex": 1,
+    "explanation": "`GROUP BY customer_id` collapses rows per customer, and `HAVING` filters to groups satisfying both conditions: at least 2 transactions and average amount exceeding 100."
+  },
+  {
+    "id": "sql_q3",
+    "skillId": "sql",
+    "topicTag": "sql_joins",
+    "difficulty": "intermediate",
+    "cognitiveTier": "syntax_recall",
+    "prompt": "Given Table A (3 rows: IDs 1, 2, NULL) and Table B (3 rows: IDs 1, 1, 3), how many rows does an INNER JOIN on ID produce?",
+    "codeSnippet": "SELECT A.id, B.id\nFROM A\nINNER JOIN B ON A.id = B.id;",
+    "options": ["1 row", "2 rows", "3 rows", "4 rows"],
+    "correctIndex": 1,
+    "explanation": "Row ID 1 in A matches both rows with ID 1 in B (1 x 2 = 2 rows). ID 2 and NULL have no match. Thus, exactly 2 rows are returned."
+  },
+  {
+    "id": "sql_q4",
+    "skillId": "sql",
+    "topicTag": "sql_joins",
+    "difficulty": "advanced",
+    "cognitiveTier": "syntax_recall",
+    "prompt": "An analyst wants to find all customers who have NEVER placed an order. What is the logical flaw in this query?",
+    "codeSnippet": "SELECT c.id, c.name\nFROM customers c\nLEFT JOIN orders o ON c.id = o.customer_id\nWHERE o.total_amount > 0;",
+    "options": [
+      "LEFT JOIN cannot be combined with a WHERE clause.",
+      "Filtering `WHERE o.total_amount > 0` discards outer-joined NULL rows, effectively converting the LEFT JOIN into an INNER JOIN.",
+      "The join predicate should use `<>` instead of `=`.",
+      "customers and orders must be joined using a CROSS JOIN."
+    ],
+    "correctIndex": 1,
+    "explanation": "In a LEFT JOIN, non-matching rows produce NULL for all order columns. Evaluating `WHERE o.total_amount > 0` filters out all NULL rows, turning it into an INNER JOIN. The correct query tests `WHERE o.id IS NULL`."
+  },
+  {
+    "id": "sql_q5",
+    "skillId": "sql",
+    "topicTag": "sql_subqueries",
+    "difficulty": "advanced",
+    "cognitiveTier": "scenario_debugging",
+    "prompt": "What does this window function query compute for each employee within their respective department?",
+    "codeSnippet": "SELECT emp_id, dept_id, salary,\n       DENSE_RANK() OVER (PARTITION BY dept_id ORDER BY salary DESC) as rank\nFROM employees;",
+    "options": [
+      "Sequential row numbers with no duplicates even when salaries match.",
+      "Relative ranking by descending salary within each department, assigning identical ranks to ties without skipping subsequent rank numbers.",
+      "Department-wide cumulative percentage of salaries.",
+      "A global rank comparing all employees company-wide."
+    ],
+    "correctIndex": 1,
+    "explanation": "`DENSE_RANK()` assigns consecutive integer ranks ordered by salary descending within each `dept_id` partition, without skipping rank integers after tied values."
+  },
+  {
+    "id": "html_q1",
+    "skillId": "html",
+    "topicTag": "html_semantics",
+    "difficulty": "beginner",
+    "cognitiveTier": "scenario_debugging",
+    "prompt": "Which HTML5 semantic element is most appropriate for enclosing self-contained content intended to be independently distributable or reusable (e.g., a blog post or news card)?",
+    "codeSnippet": "<___>\n  <h2>Breaking Tech News</h2>\n  <p>Agentic workflows revolutionize coding.</p>\n</___>",
+    "options": ["<section>", "<article>", "<aside>", "<div>"],
+    "correctIndex": 1,
+    "explanation": "The `<article>` element represents a complete, self-contained composition in a document, page, or site that is independently distributable or syndicatable."
+  },
+  {
+    "id": "html_q2",
+    "skillId": "html",
+    "topicTag": "html_forms",
+    "difficulty": "beginner",
+    "cognitiveTier": "scenario_debugging",
+    "prompt": "Which attribute on an `<input>` element provides accessible screen-reader association when linked to a `<label>`?",
+    "codeSnippet": "<label for=\"user-email\">Email Address</label>\n<input type=\"email\" id=\"user-email\" name=\"email\" />",
+    "options": ["name matching label id", "id matching label's for attribute", "placeholder attribute", "value attribute"],
+    "correctIndex": 1,
+    "explanation": "Screen readers and browsers establish programmatic association when the label's `for` attribute matches the input's `id` attribute."
+  },
+  {
+    "id": "html_q3",
+    "skillId": "html",
+    "topicTag": "html_dom_structure",
+    "difficulty": "intermediate",
+    "cognitiveTier": "code_tracing",
+    "prompt": "Which element in the DOM tree represents the document root containing both `<head>` and `<body>`?",
+    "codeSnippet": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head><title>App</title></head>\n  <body><main></main></body>\n</html>",
+    "options": ["<!DOCTYPE html>", "document.documentElement (<html>)", "document.head", "<main>"],
+    "correctIndex": 1,
+    "explanation": "`document.documentElement` evaluates to the root element (`<html>`) of the document containing `<head>` and `<body>`."
+  },
+  {
+    "id": "html_q4",
+    "skillId": "html",
+    "topicTag": "html_forms",
+    "difficulty": "intermediate",
+    "cognitiveTier": "syntax_recall",
+    "prompt": "What happens when a user submits an HTML form containing an input with `required` and `pattern=\"[0-9]{3}\"` if they type 'AB'?",
+    "codeSnippet": "<form id=\"zipForm\">\n  <input type=\"text\" required pattern=\"[0-9]{3}\" />\n  <button type=\"submit\">Submit</button>\n</form>",
+    "options": [
+      "The form submits normally with value 'AB'.",
+      "The browser's native client-side validation prevents form submission and displays a constraint validation error message.",
+      "The input automatically truncates to numeric 0.",
+      "The server returns a 400 Bad Request error immediately."
+    ],
+    "correctIndex": 1,
+    "explanation": "HTML5 constraint validation checks the input against the regex pattern before form submission, blocking the submit event and displaying a localized validation bubble."
+  },
+  {
+    "id": "html_q5",
+    "skillId": "html",
+    "topicTag": "html_semantics",
+    "difficulty": "advanced",
+    "cognitiveTier": "scenario_debugging",
+    "prompt": "An accessibility audit reports that screen readers cannot identify the main navigation region. What is the root cause?",
+    "codeSnippet": "<div class=\"nav-wrapper\" onclick=\"navigate()\">\n  <div class=\"nav-item\">Home</div>\n  <div class=\"nav-item\">Docs</div>\n</div>",
+    "options": [
+      "CSS is missing display: flex.",
+      "The code uses generic `<div>` tags lacking semantic landmarks (`<nav>`) and keyboard focusable anchor elements (`<a href=\"...\">`).",
+      "onclick cannot be attached to a div.",
+      "The class attribute cannot contain hyphens."
+    ],
+    "correctIndex": 1,
+    "explanation": "Generic `<div>` tags have no semantic meaning in the accessibility tree. Using `<nav>` provides the navigational landmark, and interactive items must be focusable `<a>` or `<button>` elements."
+  },
+  {
+    "id": "css_q1",
+    "skillId": "css",
+    "topicTag": "css_box_model",
+    "difficulty": "beginner",
+    "cognitiveTier": "syntax_recall",
+    "prompt": "With `box-sizing: border-box`, what does an element's specified `width: 200px` include?",
+    "codeSnippet": ".box {\n  box-sizing: border-box;\n  width: 200px;\n  padding: 20px;\n  border: 5px solid black;\n  margin: 15px;\n}",
+    "options": [
+      "Only the content area",
+      "Content, padding, and border",
+      "Content, padding, border, and margin",
+      "Only padding and margin"
+    ],
+    "correctIndex": 1,
+    "explanation": "Under `border-box`, the specified width and height encompass the content, internal padding, and border. Margin remains outside the box."
+  },
+  {
+    "id": "css_q2",
+    "skillId": "css",
+    "topicTag": "css_flexbox_grid",
+    "difficulty": "intermediate",
+    "cognitiveTier": "code_tracing",
+    "prompt": "How does `justify-content: space-between` arrange items along the main axis of a flex container?",
+    "codeSnippet": ".container {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n}",
+    "options": [
+      "Centers all items with equal space around each item.",
+      "Aligns first item flush to start, last item flush to end, distributing remaining space equally between items.",
+      "Packs all items to the start of the container.",
+      "Distributes equal space before the first item and after the last item."
+    ],
+    "correctIndex": 1,
+    "explanation": "`space-between` places the first child at the start edge, the last child at the end edge, and spaces all intermediate children evenly."
+  },
+  {
+    "id": "css_q3",
+    "skillId": "css",
+    "topicTag": "css_responsive",
+    "difficulty": "advanced",
+    "cognitiveTier": "scenario_debugging",
+    "prompt": "Why is this mobile layout breaking on high-density smartphone screens despite media query rules?",
+    "codeSnippet": "/* CSS */\n@media (max-width: 768px) {\n  .sidebar { display: none; }\n}\n/* HTML <head> lacks viewport meta */",
+    "options": [
+      "The media query requires min-width instead.",
+      "Missing `<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">` causes mobile browsers to render at a virtual desktop width (e.g., 980px).",
+      "max-width must be specified in rem units.",
+      "display: none is not supported in mobile CSS."
+    ],
+    "correctIndex": 1,
+    "explanation": "Without the viewport meta tag, mobile browsers default to rendering pages in a desktop viewport (usually 980px wide) and scaling it down, preventing mobile media queries from triggering."
+  },
+  {
+    "id": "react_q1",
+    "skillId": "react",
+    "topicTag": "react_components_props",
+    "difficulty": "beginner",
+    "cognitiveTier": "syntax_recall",
+    "prompt": "In React, how should props passed into a child component be treated regarding mutability?",
+    "codeSnippet": "function UserBadge(props) {\n  // Can we do: props.name = 'Updated'?\n  return <span>{props.name}</span>;\n}",
+    "options": [
+      "Props are read-only and immutable; components must act as pure functions with respect to their props.",
+      "Props can be mutated directly to trigger child re-renders.",
+      "Props can only be mutated inside useEffect.",
+      "Props are mutable if passed as an object."
+    ],
+    "correctIndex": 0,
+    "explanation": "All React components must act as pure functions with respect to their props. Directly mutating props violates unidirectional data flow and causes hard-to-track rendering bugs."
+  },
+  {
+    "id": "react_q2",
+    "skillId": "react",
+    "topicTag": "react_hooks_state",
+    "difficulty": "intermediate",
+    "cognitiveTier": "code_tracing",
+    "prompt": "What does the count render after clicking the button once?",
+    "codeSnippet": "function Counter() {\n  const [count, setCount] = useState(0);\n  const handleClick = () => {\n    setCount(count + 1);\n    setCount(count + 1);\n    setCount(count + 1);\n  };\n  return <button onClick={handleClick}>{count}</button>;\n}",
+    "options": ["1", "2", "3", "0"],
+    "correctIndex": 0,
+    "explanation": "Because state updates in the same event loop tick are batched and reference the captured closure value `count` (which is 0), each call schedules `setCount(0 + 1)`. To increment three times, updater functions `setCount(prev => prev + 1)` must be used."
+  },
+  {
+    "id": "react_q3",
+    "skillId": "react",
+    "topicTag": "react_effects_api",
+    "difficulty": "advanced",
+    "cognitiveTier": "scenario_debugging",
+    "prompt": "What is the critical bug in this component that causes memory leaks and race conditions upon rapid unmounting?",
+    "codeSnippet": "useEffect(() => {\n  fetchUserData(userId).then(data => setUser(data));\n}, [userId]);",
+    "options": [
+      "userId should not be in the dependency array.",
+      "fetchUserData cannot be used inside useEffect.",
+      "The effect lacks an AbortController cleanup or boolean flag to cancel/ignore responses when userId changes or the component unmounts.",
+      "setUser must be called synchronously."
+    ],
+    "correctIndex": 2,
+    "explanation": "If the component unmounts or `userId` changes while `fetchUserData` is pending, the resolved promise attempts to update state on an unmounted/stale component. An `AbortController` or cancellation flag cleanup avoids race conditions."
+  },
+  {
+    "id": "node_q1",
+    "skillId": "nodejs",
+    "topicTag": "node_runtime_modules",
+    "difficulty": "beginner",
+    "cognitiveTier": "syntax_recall",
+    "prompt": "Which module system is natively loaded by default in Node.js when using `require()` and `module.exports`?",
+    "codeSnippet": "const fs = require('fs');\nmodule.exports = { fs };",
+    "options": ["ECMAScript Modules (ESM)", "CommonJS (CJS)", "AMD", "SystemJS"],
+    "correctIndex": 1,
+    "explanation": "`require()` and `module.exports` are the core primitives of CommonJS (CJS), which was the original native module specification for Node.js."
+  },
+  {
+    "id": "node_q2",
+    "skillId": "nodejs",
+    "topicTag": "node_express_middleware",
+    "difficulty": "intermediate",
+    "cognitiveTier": "code_tracing",
+    "prompt": "Why does this Express request hang indefinitely and never return a response?",
+    "codeSnippet": "app.use((req, res, next) => {\n  console.log('Incoming request at: ' + Date.now());\n  // missing instruction\n});\napp.get('/users', (req, res) => res.json([]));",
+    "options": [
+      "Express routes must be declared before middleware.",
+      "The middleware neither calls `next()` to pass control to the next handler nor sends a response via `res`.",
+      "Date.now() throws an asynchronous rejection.",
+      "Express does not support arrow functions."
+    ],
+    "correctIndex": 1,
+    "explanation": "In Express middleware pipelines, if a middleware does not terminate the request-response cycle (e.g. `res.send()`), it MUST invoke `next()` to forward execution to downstream route handlers."
+  },
+  {
+    "id": "node_q3",
+    "skillId": "nodejs",
+    "topicTag": "node_async_io",
+    "difficulty": "advanced",
+    "cognitiveTier": "scenario_debugging",
+    "prompt": "A server crashes with 'JavaScript heap out of memory' when serving a 2GB CSV file. What is the architectural solution?",
+    "codeSnippet": "app.get('/download', (req, res) => {\n  const data = fs.readFileSync('huge.csv');\n  res.send(data);\n});",
+    "options": [
+      "Increase Node memory using --max-old-space-size=16384 only.",
+      "Switch to streaming: pipe a readable file stream (`fs.createReadStream('huge.csv').pipe(res)`) to process chunks without buffering the full file into memory.",
+      "Convert the CSV to JSON before reading.",
+      "Use child_process.execSync to read the file."
+    ],
+    "correctIndex": 1,
+    "explanation": "`fs.readFileSync` loads the entire 2GB file into V8 buffer memory at once. Streaming using `fs.createReadStream().pipe(res)` keeps memory consumption constant (a few kilobytes) via backpressure-aware chunking."
+  },
+  {
+    "id": "api_q1",
+    "skillId": "rest_apis",
+    "topicTag": "api_http_methods",
+    "difficulty": "beginner",
+    "cognitiveTier": "syntax_recall",
+    "prompt": "Which HTTP method is defined by RFC 7231 as idempotent and used to replace the entire target resource with the requested payload?",
+    "codeSnippet": "PUT /api/v1/users/42 HTTP/1.1\nContent-Type: application/json\n{\"name\": \"Alice\", \"email\": \"alice@example.com\"}",
+    "options": ["POST", "PUT", "PATCH", "DELETE"],
+    "correctIndex": 1,
+    "explanation": "`PUT` is idempotent and replaces the entire target resource representation. `PATCH` applies partial modifications, and `POST` is non-idempotent creation."
+  },
+  {
+    "id": "api_q2",
+    "skillId": "rest_apis",
+    "topicTag": "api_status_auth",
+    "difficulty": "intermediate",
+    "cognitiveTier": "code_tracing",
+    "prompt": "Which HTTP status code should an API return when a client presents a valid authentication token but lacks administrative permissions for the requested endpoint?",
+    "codeSnippet": "// Authorization: Bearer <valid_regular_user_token>\n// POST /api/admin/purge-database",
+    "options": ["401 Unauthorized", "403 Forbidden", "404 Not Found", "405 Method Not Allowed"],
+    "correctIndex": 1,
+    "explanation": "`401 Unauthorized` signifies missing or invalid credentials (authentication failure). `403 Forbidden` means the server understood the credentials, but the client does not have permission to access the resource (authorization failure)."
+  },
+  {
+    "id": "api_q3",
+    "skillId": "rest_apis",
+    "topicTag": "api_json_schemas",
+    "difficulty": "advanced",
+    "cognitiveTier": "scenario_debugging",
+    "prompt": "An API contract requires resilient schema evolution. What design practice avoids breaking mobile clients on future additions?",
+    "codeSnippet": "// Version 1:\n{ \"user\": { \"id\": 1, \"name\": \"Alex\" } }\n// Future Version 2:\n{ \"user\": { \"id\": 1, \"name\": \"Alex\", \"avatarUrl\": \"https://...\" } }",
+    "options": [
+      "Remove old fields immediately when new fields are introduced.",
+      "Design clients with tolerant parsing (ignoring unknown properties) and avoid deleting or changing existing field types without API versioning.",
+      "Require clients to pass strict XML payloads instead of JSON.",
+      "Change status code to 301 for every updated payload."
+    ],
+    "correctIndex": 1,
+    "explanation": "Postel's Law (robustness principle) for APIs states clients should ignore unexpected properties while servers maintain backward compatibility by never modifying or deleting existing field semantics without version increments."
+  },
+  {
+    "id": "stats_q1",
+    "skillId": "statistics",
+    "topicTag": "stats_descriptive",
+    "difficulty": "beginner",
+    "cognitiveTier": "syntax_recall",
+    "prompt": "Which metric of central tendency is least sensitive to extreme outliers in a heavily skewed income distribution?",
+    "codeSnippet": "incomes = [25000, 30000, 32000, 35000, 10000000]",
+    "options": ["Arithmetic Mean", "Median", "Standard Deviation", "Variance"],
+    "correctIndex": 1,
+    "explanation": "The median represents the 50th percentile and is robust against extreme outliers, whereas the arithmetic mean is pulled heavily in the direction of the skew."
+  },
+  {
+    "id": "stats_q2",
+    "skillId": "statistics",
+    "topicTag": "stats_probability",
+    "difficulty": "intermediate",
+    "cognitiveTier": "code_tracing",
+    "prompt": "Under Bayes' Theorem, what formula computes the posterior probability P(A|B)?",
+    "codeSnippet": "P(A|B) = [ P(B|A) * P(A) ] / P(B)",
+    "options": [
+      "P(A|B) = P(A) + P(B) - P(A and B)",
+      "P(A|B) = [ P(B|A) * P(A) ] / P(B)",
+      "P(A|B) = P(B|A) / P(A)",
+      "P(A|B) = P(A) * P(B)"
+    ],
+    "correctIndex": 1,
+    "explanation": "Bayes' Theorem updates prior belief P(A) with likelihood P(B|A) normalized by marginal evidence P(B) to yield posterior probability P(A|B)."
+  },
+  {
+    "id": "stats_q3",
+    "skillId": "statistics",
+    "topicTag": "stats_hypothesis_testing",
+    "difficulty": "advanced",
+    "cognitiveTier": "scenario_debugging",
+    "prompt": "An A/B test obtains a p-value of 0.03 at significance level alpha = 0.05. What is the statistically correct interpretation?",
+    "codeSnippet": "alpha = 0.05\np_value = 0.03\n# H0: Variant has zero effect on conversion",
+    "options": [
+      "There is a 97% probability that the variant is definitively superior.",
+      "Assuming the null hypothesis is true, there is a 3% probability of observing a test statistic as extreme as or more extreme than the one observed; reject H0.",
+      "The null hypothesis has a 3% chance of being true.",
+      "The experiment suffered from selection bias."
+    ],
+    "correctIndex": 1,
+    "explanation": "The p-value is the conditional probability P(Data as extreme | H0 is true). Since 0.03 < 0.05, we reject the null hypothesis at the 5% significance level."
+  },
+  {
+    "id": "pd_q1",
+    "skillId": "pandas",
+    "topicTag": "pd_dataframes",
+    "difficulty": "beginner",
+    "cognitiveTier": "syntax_recall",
+    "prompt": "In Pandas, which accessor indexer is label-based (as opposed to integer-position based)?",
+    "codeSnippet": "df = pd.DataFrame({'val': [10, 20]}, index=['a', 'b'])\n# Access row 'a'",
+    "options": ["df.iloc['a']", "df.loc['a']", "df.take('a')", "df.at_index('a')"],
+    "correctIndex": 1,
+    "explanation": "`df.loc[]` is strictly label-based indexing, whereas `df.iloc[]` is strictly zero-based integer positional indexing."
+  },
+  {
+    "id": "pd_q2",
+    "skillId": "pandas",
+    "topicTag": "pd_groupby_merge",
+    "difficulty": "intermediate",
+    "cognitiveTier": "code_tracing",
+    "prompt": "What does this chaining expression compute on a sales DataFrame?",
+    "codeSnippet": "df.groupby('region')['revenue'].agg(['mean', 'sum']).reset_index()",
+    "options": [
+      "Calculates mean and sum of revenue per region and returns a clean flat DataFrame with 'region' as a regular column.",
+      "Filters out negative revenues by region.",
+      "Transposes rows into columns grouped by region.",
+      "Performs a cross join between region and revenue."
+    ],
+    "correctIndex": 0,
+    "explanation": "`groupby('region')['revenue']` partitions revenue by region, `.agg(['mean', 'sum'])` computes both aggregations, and `.reset_index()` converts the index into a standard column."
+  },
+  {
+    "id": "pd_q3",
+    "skillId": "pandas",
+    "topicTag": "pd_cleaning",
+    "difficulty": "advanced",
+    "cognitiveTier": "scenario_debugging",
+    "prompt": "Why does `df['col'] = df['col'].fillna(0)` trigger a `SettingWithCopyWarning` in this pipeline?",
+    "codeSnippet": "sub_df = df[df['status'] == 'active']\nsub_df['score'] = sub_df['score'].fillna(0)",
+    "options": [
+      "Pandas does not allow filling NaN with 0.",
+      "`sub_df` is a slice view of `df`; modifying it directly risks modifying the original DataFrame unintentionally. The slice should be explicitly copied using `.copy()`.",
+      "fillna() is a deprecated function in Pandas 2.0.",
+      "The status column must be indexed first."
+    ],
+    "correctIndex": 1,
+    "explanation": "Chained indexing or slicing creates a view where Pandas cannot guarantee if assignments affect the original object. Calling `.copy()` creates an explicit separate object, eliminating `SettingWithCopyWarning`."
+  },
+  {
+    "id": "ml_q1",
+    "skillId": "machine_learning",
+    "topicTag": "ml_supervised",
+    "difficulty": "beginner",
+    "cognitiveTier": "syntax_recall",
+    "prompt": "Which supervised machine learning algorithm models the probability of a discrete binary outcome using a logistic sigmoid function?",
+    "codeSnippet": "from sklearn.linear_model import LogisticRegression\nmodel = LogisticRegression()\nmodel.fit(X_train, y_train)",
+    "options": ["Linear Regression", "Logistic Regression", "K-Means Clustering", "Principal Component Analysis"],
+    "correctIndex": 1,
+    "explanation": "Logistic regression uses the logistic/sigmoid function to map continuous linear combinations into [0, 1] for binary classification."
+  },
+  {
+    "id": "ml_q2",
+    "skillId": "machine_learning",
+    "topicTag": "ml_evaluation_metrics",
+    "difficulty": "intermediate",
+    "cognitiveTier": "code_tracing",
+    "prompt": "In an imbalanced fraud detection problem (99.9% non-fraud), why is 99.8% raw Accuracy a deceptive metric?",
+    "codeSnippet": "y_true = [0]*999 + [1]*1\ny_pred = [0]*1000\naccuracy = (y_true == y_pred).mean() # 0.999",
+    "options": [
+      "Because a trivial model that predicts non-fraud for every sample achieves 99.9% accuracy while detecting 0% of fraud cases; Recall and Precision (PR-AUC) are needed.",
+      "Accuracy can only be measured on regression problems.",
+      "The sample size is too small to calculate statistics.",
+      "scikit-learn accuracy_score requires balanced weights."
+    ],
+    "correctIndex": 0,
+    "explanation": "When classes are heavily imbalanced, high accuracy is trivially obtained by predicting the majority class exclusively. Precision, Recall, and F1-score evaluate true performance on the minority positive class."
+  },
+  {
+    "id": "ml_q3",
+    "skillId": "machine_learning",
+    "topicTag": "ml_feature_engineering",
+    "difficulty": "advanced",
+    "cognitiveTier": "scenario_debugging",
+    "prompt": "What critical data leakage flaw occurs in this machine learning preprocessing pipeline?",
+    "codeSnippet": "scaler = StandardScaler()\nX_scaled = scaler.fit_transform(X) # Fit on all data\nX_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2)",
+    "options": [
+      "StandardScaler should only be used on targets, not features.",
+      "The scaler was fit on the full dataset before splitting, leaking mean and variance information from the test set into training.",
+      "train_test_split must use test_size=0.5.",
+      "Features must be scaled using MinMax before StandardScaler."
+    ],
+    "correctIndex": 1,
+    "explanation": "Fitting preprocessing transformations (like scalers or encoders) on the entire dataset prior to splitting leaks distribution information from the test set into training, resulting in overly optimistic evaluation metrics."
+  }
+]

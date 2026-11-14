@@ -1,0 +1,125 @@
+[
+  {
+    "id": "fullstack_dev",
+    "title": "Full-Stack Web Developer",
+    "description": "Architects and implements end-to-end web applications across responsive frontends, scalable server APIs, and relational persistence layers.",
+    "requirements": [
+      {
+        "skillId": "html",
+        "requiredLevel": "intermediate",
+        "weight": 3,
+        "criticalTopicTags": ["html_semantics", "html_forms"]
+      },
+      {
+        "skillId": "css",
+        "requiredLevel": "intermediate",
+        "weight": 3,
+        "criticalTopicTags": ["css_box_model", "css_flexbox_grid"]
+      },
+      {
+        "skillId": "javascript",
+        "requiredLevel": "advanced",
+        "weight": 5,
+        "criticalTopicTags": ["js_functions_scope", "js_arrays_objects", "js_async_promises"]
+      },
+      {
+        "skillId": "react",
+        "requiredLevel": "intermediate",
+        "weight": 4,
+        "criticalTopicTags": ["react_components_props", "react_hooks_state", "react_effects_api"]
+      },
+      {
+        "skillId": "nodejs",
+        "requiredLevel": "intermediate",
+        "weight": 4,
+        "criticalTopicTags": ["node_runtime_modules", "node_express_middleware"]
+      },
+      {
+        "skillId": "rest_apis",
+        "requiredLevel": "intermediate",
+        "weight": 4,
+        "criticalTopicTags": ["api_http_methods", "api_status_auth"]
+      },
+      {
+        "skillId": "sql",
+        "requiredLevel": "intermediate",
+        "weight": 4,
+        "criticalTopicTags": ["sql_select_filter", "sql_aggregation", "sql_joins"]
+      },
+      {
+        "skillId": "python",
+        "requiredLevel": "intermediate",
+        "weight": 3,
+        "criticalTopicTags": ["py_control_flow", "py_functions"]
+      }
+    ]
+  },
+  {
+    "id": "data_analyst",
+    "title": "Data Analyst & Business Intelligence Specialist",
+    "description": "Extracts actionable strategic insights using complex SQL aggregations, exploratory Python pipelines, statistical inference, and tabular data modelling.",
+    "requirements": [
+      {
+        "skillId": "sql",
+        "requiredLevel": "advanced",
+        "weight": 5,
+        "criticalTopicTags": ["sql_aggregation", "sql_joins", "sql_subqueries"]
+      },
+      {
+        "skillId": "python",
+        "requiredLevel": "intermediate",
+        "weight": 4,
+        "criticalTopicTags": ["py_control_flow", "py_functions"]
+      },
+      {
+        "skillId": "statistics",
+        "requiredLevel": "intermediate",
+        "weight": 5,
+        "criticalTopicTags": ["stats_descriptive", "stats_probability", "stats_hypothesis_testing"]
+      },
+      {
+        "skillId": "pandas",
+        "requiredLevel": "advanced",
+        "weight": 5,
+        "criticalTopicTags": ["pd_dataframes", "pd_groupby_merge", "pd_cleaning"]
+      }
+    ]
+  },
+  {
+    "id": "aiml_engineer",
+    "title": "AI & Machine Learning Engineer",
+    "description": "Designs, trains, evaluates, and deploys predictive machine learning models and mathematical inference pipelines at scale.",
+    "requirements": [
+      {
+        "skillId": "python",
+        "requiredLevel": "advanced",
+        "weight": 5,
+        "criticalTopicTags": ["py_functions", "py_collections", "py_oop"]
+      },
+      {
+        "skillId": "statistics",
+        "requiredLevel": "advanced",
+        "weight": 4,
+        "criticalTopicTags": ["stats_probability", "stats_hypothesis_testing"]
+      },
+      {
+        "skillId": "pandas",
+        "requiredLevel": "intermediate",
+        "weight": 4,
+        "criticalTopicTags": ["pd_dataframes", "pd_groupby_merge"]
+      },
+      {
+        "skillId": "machine_learning",
+        "requiredLevel": "advanced",
+        "weight": 5,
+        "criticalTopicTags": ["ml_supervised", "ml_evaluation_metrics", "ml_feature_engineering"]
+      },
+      {
+        "skillId": "sql",
+        "requiredLevel": "beginner",
+        "weight": 2,
+        "criticalTopicTags": ["sql_select_filter"]
+      }
+    ]
+  }
+]
