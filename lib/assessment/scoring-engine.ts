@@ -156,17 +156,19 @@ export function scoreSkillAssessment(
 
     // Tier Inversion Anomaly & Confidence Formula
     const hasInversion = passedScenarioDebugging && failedSyntaxRecall;
+    const uniqueTopicsCovered = new Set(attemptedForSkill.map((q) => q.topicTag)).size;
 
     let confidence: ConfidenceLevel = "low";
-    if (questionsAttempted >= 3 && !hasInversion && !rapidGuessDetected) {
-      confidence = "high";
-    } else if (
-      questionsAttempted >= 2 &&
-      (hasInversion || rapidGuessDetected || (assessmentScore >= 40 && assessmentScore <= 79))
-    ) {
-      confidence = "medium";
-    } else {
+    if (questionsAttempted < 3 || uniqueTopicsCovered < 2) {
+      // Enforce low confidence if <3 questions answered or <2 micro-topics covered
       confidence = "low";
+    } else if (hasInversion || rapidGuessDetected) {
+      // Rapid guess anomaly or cognitive tier inversion caps confidence at medium
+      confidence = "medium";
+    } else if (assessmentScore >= 40) {
+      confidence = "high";
+    } else {
+      confidence = "medium";
     }
 
     // 3-Vector Triangulation Archetype assignment

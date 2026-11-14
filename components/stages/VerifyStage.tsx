@@ -204,7 +204,7 @@ export function VerifyStage() {
     switch (tier) {
       case "syntax_recall":
       case "declarative_concept":
-        return <div className="w-2.5 h-2.5 rounded-full bg-[var(--ink)]" title="Declarative Concept" />;
+        return <div className="w-2.5 h-2.5 rounded-[50%] bg-[var(--ink)]" title="Declarative Concept" />;
       case "code_tracing":
         return <div className="w-2.5 h-2.5 rotate-45 bg-[var(--ink)]" title="Code Tracing" />;
       case "scenario_debugging":
@@ -292,7 +292,7 @@ export function VerifyStage() {
                   }`}
                 >
                   <span
-                    className={`w-5 h-5 rounded-full border flex items-center justify-center text-[11px] font-mono shrink-0 ${
+                    className={`w-5 h-5 rounded-[50%] border flex items-center justify-center text-[11px] font-mono shrink-0 ${
                       isSelected
                         ? "border-[var(--viridian)] bg-[var(--viridian)] text-white font-bold"
                         : "border-[var(--pencil)] text-[var(--pencil)]"

@@ -134,6 +134,13 @@ export const ResourceItemSchema = z.object({
 export type ResourceItem = z.infer<typeof ResourceItemSchema>;
 
 // --- LEARNER & VALIDATION SCHEMAS ---
+export const LearnerProjectSchema = z.object({
+  name: z.string(),
+  description: z.string(),
+  techStack: z.array(z.string()),
+});
+export type LearnerProject = z.infer<typeof LearnerProjectSchema>;
+
 export const LearnerBackgroundSchema = z.object({
   learnerId: z.string(),
   name: z.string().min(1),
@@ -141,6 +148,8 @@ export const LearnerBackgroundSchema = z.object({
   fieldOfStudy: z.string(),
   hasPriorProjects: z.boolean(),
   priorCertifications: z.array(z.string()).default([]),
+  projects: z.array(LearnerProjectSchema).optional(),
+  interests: z.array(z.string()).optional(),
   targetCareerId: z.enum(["fullstack_dev", "data_analyst", "aiml_engineer"]),
   weeklyLearningHours: z.number().min(1).max(60),
 });

@@ -234,11 +234,11 @@ export function EvidencePanel() {
               <div className="font-medium text-[var(--ink)]">Calibration Ruler Legend:</div>
               <div className="space-y-1.5 text-[11px] text-[var(--pencil)]">
                 <div className="flex items-center gap-2">
-                  <div className="w-[12px] h-[12px] rounded-full border border-dashed border-[var(--pencil)] bg-[var(--surface)]" />
+                  <div className="w-[12px] h-[12px] rounded-[50%] border border-dashed border-[var(--pencil)] bg-[var(--surface)]" />
                   <span>Dashed hollow circle: Self-reported claimed rank</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-[12px] h-[12px] rounded-full bg-[var(--viridian)]" />
+                  <div className="w-[12px] h-[12px] rounded-[50%] bg-[var(--viridian)]" />
                   <span>Solid viridian marker: Empirically verified rank</span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -354,15 +354,23 @@ export function EvidencePanel() {
               <div className="font-semibold text-[var(--ink)]">Career Readiness Delta:</div>
               <div className="flex items-center justify-between py-1 border-b border-[var(--rule)]">
                 <span className="text-[var(--pencil)]">Baseline readiness:</span>
-                <span className="font-bold tabular-nums">42%</span>
+                <span className="font-bold tabular-nums">
+                  {state.preRecoveryReadiness ?? state.gapMatrix?.overallReadinessScore ?? 42}%
+                </span>
               </div>
               <div className="flex items-center justify-between py-1 border-b border-[var(--rule)]">
                 <span className="text-[var(--pencil)]">Post-remediation recovery:</span>
-                <span className="font-bold text-[var(--viridian)] tabular-nums">61%</span>
+                <span className="font-bold text-[var(--viridian)] tabular-nums">
+                  {state.postRecoveryReadiness ?? 61}%
+                </span>
               </div>
               <div className="flex items-center justify-between py-1">
                 <span className="text-[var(--pencil)]">Readiness jump:</span>
-                <span className="font-bold text-[var(--viridian)] tabular-nums">+19%</span>
+                <span className="font-bold text-[var(--viridian)] tabular-nums">
+                  +{(state.postRecoveryReadiness && state.preRecoveryReadiness)
+                    ? state.postRecoveryReadiness - state.preRecoveryReadiness
+                    : 19}%
+                </span>
               </div>
             </div>
 
@@ -377,15 +385,50 @@ export function EvidencePanel() {
           </div>
         );
 
-      // Stage 7: Transferred Skill Capital Breakdown
+      // Stage 7: Dynamic Readiness Telemetry
       case 7:
+        return (
+          <div className="space-y-3">
+            <div>
+              <h3 className="text-[13px] font-semibold text-[var(--ink)]">
+                Dynamic Readiness Telemetry
+              </h3>
+              <p className="text-[12px] text-[var(--pencil)] font-serif-reading">
+                Deterministic calculation of weighted curriculum completion.
+              </p>
+            </div>
+
+            <div className="border border-[var(--viridian)] bg-[var(--viridian-tint)] p-3 text-[12px] space-y-2">
+              <div className="font-bold text-[var(--viridian)]">Module Completion Progress:</div>
+              <div className="text-[24px] font-bold text-[var(--ink)] tabular-nums font-mono">
+                {state.completedModuleIds.length} / {state.roadmap?.modules.length || 0} modules
+              </div>
+              <p className="text-[var(--pencil)] font-serif-reading">
+                Toggling modules recalculates career readiness via the career requirement weight matrix without manual overrides.
+              </p>
+            </div>
+
+            <div className="border border-[var(--rule)] bg-[var(--surface)] text-[12px]">
+              <div className="bg-[var(--surface-recessed)] px-2.5 py-1.5 font-medium border-b border-[var(--rule)] text-[var(--ink)]">
+                Telemetry Formula
+              </div>
+              <div className="p-2.5 space-y-1 text-[var(--pencil)] font-mono text-[11px]">
+                <div>Readiness = Sum(weight_i * match_i) / Sum(weight_i)</div>
+                <div>Completed: [{state.completedModuleIds.join(", ") || "None"}]</div>
+              </div>
+            </div>
+          </div>
+        );
+
+      // Stage 8: Transferred Skill Capital Breakdown
+      case 8:
         return (
           <div className="space-y-3">
             <div>
               <h3 className="text-[13px] font-semibold text-[var(--ink)]">
                 Skill Capital Ledger
               </h3>
-              <p className="text-[12px] text-[var(--pencil)] mt-0.5 font-serif-reading">
+              <p className="text-[12px] text-[var(--pencil)] font-serif-reading">
                 Zero-loss career switch preservation accounting.
               </p>
             </div>

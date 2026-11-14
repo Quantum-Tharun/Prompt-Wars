@@ -161,14 +161,14 @@ export function CalibrationRuler({
 
         {/* Claimed Marker (Hollow dashed) */}
         <div
-          className="absolute top-[20px] w-[12px] h-[12px] rounded-full border-[1.5px] border-dashed border-[var(--pencil)] bg-[var(--surface)] -translate-x-1/2 -translate-y-1/2"
+          className="absolute top-[20px] w-[12px] h-[12px] rounded-[50%] border-[1.5px] border-dashed border-[var(--pencil)] bg-[var(--surface)] -translate-x-1/2 -translate-y-1/2"
           style={{ left: `${claimedPct}%` }}
           title={`Claimed: ${formatProficiency(claimedLevel)}`}
         />
 
         {/* Verified Marker (Solid Viridian with slide transition) */}
         <div
-          className="absolute top-[20px] w-[12px] h-[12px] rounded-full bg-[var(--viridian)] -translate-x-1/2 -translate-y-1/2 ruler-marker-slide"
+          className="absolute top-[20px] w-[12px] h-[12px] rounded-[50%] bg-[var(--viridian)] -translate-x-1/2 -translate-y-1/2 ruler-marker-slide"
           style={{ left: `${currentVerifiedPct}%` }}
           title={`Verified: ${formatProficiency(validatedLevel)}`}
         />

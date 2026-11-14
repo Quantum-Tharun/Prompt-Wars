@@ -12,6 +12,7 @@ import { VerifyStage } from "@/components/stages/VerifyStage";
 import { ValidatedStage } from "@/components/stages/ValidatedStage";
 import { RoadmapStage } from "@/components/stages/RoadmapStage";
 import { MentorStage } from "@/components/stages/MentorStage";
+import { ProgressStage } from "@/components/stages/ProgressStage";
 import { SwitchStage } from "@/components/stages/SwitchStage";
 
 function StageContainer() {
@@ -33,6 +34,8 @@ function StageContainer() {
     case 6:
       return <MentorStage />;
     case 7:
+      return <ProgressStage />;
+    case 8:
       return <SwitchStage />;
     default:
       return <LandingOverview />;

@@ -16,7 +16,7 @@ export function SwitchStage() {
   if (state.validatedSkills.length === 0) {
     return (
       <StageFrame
-        stageNumber={7}
+        stageNumber={8}
         title="Zero-Loss Career Switch & Skill Capital Ledger"
         subtitle="Cross-career skill transfer engine preserving earned curriculum capital."
       >
@@ -67,7 +67,7 @@ export function SwitchStage() {
 
   return (
     <StageFrame
-      stageNumber={7}
+      stageNumber={8}
       title="Zero-Loss Career Switch & Skill Capital Ledger"
       subtitle="Eliminate starting from scratch. Quantify transferred curriculum capital, contextual bridge deltas, and net-new domain requirements."
     >

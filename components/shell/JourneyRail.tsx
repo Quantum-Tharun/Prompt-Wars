@@ -17,7 +17,8 @@ const STAGES: StageItem[] = [
   { id: 4, label: "Validated profile", tagline: "Calibration gap & archetypes" },
   { id: 5, label: "Roadmap", tagline: "5-phase prerequisite DAG" },
   { id: 6, label: "Mentor", tagline: "Checkpoint failure & gate unlock" },
-  { id: 7, label: "Career switch", tagline: "Skill capital ledger" },
+  { id: 7, label: "Progress", tagline: "Completion ledger & readiness curve" },
+  { id: 8, label: "Career switch", tagline: "Skill capital ledger" },
 ];
 
 export function JourneyRail() {
@@ -58,19 +59,19 @@ export function JourneyRail() {
               <div className="w-[14px] flex items-center justify-center shrink-0">
                 {isCompleted && (
                   <div
-                    className="w-[8px] h-[8px] rounded-full bg-[var(--ink)]"
+                    className="w-[8px] h-[8px] rounded-[50%] bg-[var(--ink)]"
                     title="Completed stage"
                   />
                 )}
                 {isCurrent && (
                   <div
-                    className="w-[10px] h-[10px] rounded-full border-2 border-[var(--viridian)] bg-transparent"
+                    className="w-[10px] h-[10px] rounded-[50%] border-2 border-[var(--viridian)] bg-transparent"
                     title="Current active stage"
                   />
                 )}
                 {isFuture && (
                   <div
-                    className="w-[8px] h-[8px] rounded-full border border-dashed border-[var(--pencil)] bg-transparent"
+                    className="w-[8px] h-[8px] rounded-[50%] border border-dashed border-[var(--pencil)] bg-transparent"
                     title="Unvisited stage"
                   />
                 )}

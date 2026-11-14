@@ -145,6 +145,10 @@ export function PrerequisiteRail({ roadmap }: PrerequisiteRailProps) {
                               {mod.title}
                             </div>
 
+                            <p className="mt-1 text-[11px] text-[var(--pencil)] font-serif-reading line-clamp-2">
+                              Why: Bridges {mod.skillId} ({mod.targetTopics.join(", ")}) to unlock downstream gates (+{mod.readinessImpactPercent}% readiness).
+                            </p>
+
                             <div className="mt-2 flex items-center justify-between text-[11px] font-mono">
                               <span className="uppercase text-[var(--pencil)]">{mod.skillId}</span>
                               <span className="tabular-nums font-medium text-[var(--ink)]">
@@ -196,6 +200,9 @@ export function PrerequisiteRail({ roadmap }: PrerequisiteRailProps) {
                   <div className="text-[12px] text-[var(--pencil)] font-serif-reading mt-0.5">
                     Skill: {mod.skillId} · Status: {mod.status}
                     {mod.prerequisiteModuleIds.length > 0 && ` · Blocked by: ${mod.prerequisiteModuleIds.join(", ")}`}
+                  </div>
+                  <div className="text-[11px] text-[var(--pencil)] font-serif-reading">
+                    Why: Bridges verified deficit in {mod.skillId} ({mod.targetTopics.join(", ")}).
                   </div>
                 </div>
 

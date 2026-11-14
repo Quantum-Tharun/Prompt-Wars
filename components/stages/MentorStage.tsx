@@ -187,7 +187,7 @@ export function MentorStage() {
               Phase 3 React is now accessible. Downstream rail segment transitioned to solid.
             </div>
             <div className="font-mono text-[14px] font-bold text-[var(--ink)] tabular-nums">
-              Readiness: {state.preRecoveryReadiness}% → {state.postRecoveryReadiness}% (+19%)
+              Readiness: {state.preRecoveryReadiness}% → {state.postRecoveryReadiness}% (+{(state.postRecoveryReadiness || 0) - (state.preRecoveryReadiness || 0)}%)
             </div>
           </div>
         )}
@@ -241,7 +241,7 @@ export function MentorStage() {
             onClick={() => dispatch({ type: "SET_ACTIVE_STAGE", stage: 7 })}
             className="px-5 py-2.5 bg-[var(--viridian)] text-[var(--surface)] hover:bg-[#187556] rounded-[4px] text-[13px] font-medium cursor-pointer"
           >
-            Evaluate career switch & skill ledger (Stage 7)
+            Review learning progress & dynamic readiness curve (Stage 7)
           </button>
         </div>
       </div>

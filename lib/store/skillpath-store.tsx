@@ -57,6 +57,7 @@ export interface SkillPathState {
   validatedSkills: SkillValidationRecord[];
   gapMatrix: CareerGapMatrix | null;
   roadmap: LearningRoadmap | null;
+  completedModuleIds: string[]; // Interactive progress module completions
   agentTraces: AgentTraceEntry[];
 
   // Mentor Checkpoint & Remediation
@@ -96,7 +97,20 @@ const DEFAULT_BACKGROUND: LearnerBackground = {
   educationLevel: "B.Tech in Computer Science",
   fieldOfStudy: "Information Technology",
   hasPriorProjects: true,
-  priorCertifications: ["CS50x Harvard"],
+  priorCertifications: ["CS50x Harvard", "Meta Front-End Spec (In Progress)"],
+  projects: [
+    {
+      name: "Personal Portfolio & Technical Blog",
+      description: "Responsive personal blog built with semantic HTML, CSS Grid, and vanilla JS DOM manipulation.",
+      techStack: ["html", "css", "javascript"],
+    },
+    {
+      name: "CLI Transaction Parser",
+      description: "Automated Python utility to parse bank CSV statements and load structured summaries into SQLite.",
+      techStack: ["python", "sql"],
+    },
+  ],
+  interests: ["Distributed backend systems", "Relational database performance", "Data analysis pipelines"],
   targetCareerId: "fullstack_dev",
   weeklyLearningHours: 8,
 };
@@ -159,6 +173,7 @@ const INITIAL_STATE: SkillPathState = {
   validatedSkills: [],
   gapMatrix: null,
   roadmap: null,
+  completedModuleIds: [],
   agentTraces: [],
 
   checkpointScore: null,
@@ -206,6 +221,7 @@ export type SkillPathAction =
   | { type: "SET_CAREER_PIVOT_DATA"; payload: PivotCareerResponse }
   | { type: "SET_SELECTED_MODULE"; moduleId: string | null }
   | { type: "SET_SELECTED_TOPIC"; topicTag: string | null }
+  | { type: "TOGGLE_MODULE_COMPLETION"; moduleId: string }
   | { type: "START_LOADING"; message: string }
   | { type: "STOP_LOADING" }
   | { type: "LOAD_PRESET"; presetNumber: 1 | 2 | 3 | 4 }
@@ -367,6 +383,34 @@ function skillPathReducer(state: SkillPathState, action: SkillPathAction): Skill
     case "SET_SELECTED_TOPIC":
       return { ...state, selectedTopicTag: action.topicTag };
 
+    case "TOGGLE_MODULE_COMPLETION": {
+      const isCompleted = state.completedModuleIds.includes(action.moduleId);
+      const updatedCompleted = isCompleted
+        ? state.completedModuleIds.filter((id) => id !== action.moduleId)
+        : [...state.completedModuleIds, action.moduleId];
+
+      // Mutate module status in roadmap if roadmap exists
+      const updatedRoadmap = state.roadmap
+        ? {
+            ...state.roadmap,
+            modules: state.roadmap.modules.map((m) =>
+              m.moduleId === action.moduleId
+                ? {
+                    ...m,
+                    status: (isCompleted ? "unlocked" : "completed") as any,
+                  }
+                : m
+            ),
+          }
+        : null;
+
+      return {
+        ...state,
+        completedModuleIds: updatedCompleted,
+        roadmap: updatedRoadmap,
+      };
+    }
+
     case "START_LOADING":
       return {
         ...state,
@@ -415,7 +459,7 @@ function skillPathReducer(state: SkillPathState, action: SkillPathAction): Skill
       if (action.presetNumber === 4) {
         return {
           ...state,
-          activeStage: 7,
+          activeStage: 8,
           background: {
             ...PRESET_2_CALIBRATED.background,
             targetCareerId: "data_analyst",

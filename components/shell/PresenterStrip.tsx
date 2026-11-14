@@ -16,6 +16,19 @@ export function PresenterStrip() {
   const [isRunningTest, setIsRunningTest] = useState(false);
   const [testResults, setTestResults] = useState<TestPipelineResponse | null>(null);
   const [testError, setTestError] = useState<string | null>(null);
+  const [reducedMotion, setReducedMotion] = useState(false);
+
+  const toggleReducedMotion = () => {
+    const next = !reducedMotion;
+    setReducedMotion(next);
+    if (typeof document !== "undefined") {
+      if (next) {
+        document.documentElement.setAttribute("data-reduced-motion", "true");
+      } else {
+        document.documentElement.removeAttribute("data-reduced-motion");
+      }
+    }
+  };
 
   const handleRunSelfTest = async () => {
     setIsRunningTest(true);
@@ -99,7 +112,7 @@ export function PresenterStrip() {
         <div className="flex items-center gap-3">
           <span className="font-semibold tracking-wide text-[#ECEEED]">SKILLPATH INSTRUMENT</span>
           <span className="text-[#9BA19F]">
-            {state.activeStage === 0 ? "Overview" : `Stage ${state.activeStage} of 7`}
+            {state.activeStage === 0 ? "Overview" : `Stage ${state.activeStage} of 8`}
           </span>
         </div>
         <button
@@ -161,7 +174,7 @@ export function PresenterStrip() {
             <button
               onClick={loadPreset4}
               className={`px-2.5 py-1 rounded-[4px] border text-[12px] cursor-pointer transition-colors ${
-                state.activeStage === 7
+                state.activeStage === 8
                   ? "bg-[#2A2E30] border-[#5F6563] text-white font-medium"
                   : "bg-transparent border-[#323538] text-[#C5C9C7] hover:bg-[#232628] hover:text-white"
               }`}
@@ -172,6 +185,14 @@ export function PresenterStrip() {
         </div>
 
         <div className="flex items-center gap-2">
+          <button
+            onClick={toggleReducedMotion}
+            className="text-[#C5C9C7] hover:text-white px-2 py-1 border border-[#323538] text-[12px] rounded-[4px] cursor-pointer"
+            title="Toggle Accessible Motion"
+          >
+            Motion: {reducedMotion ? "Reduced" : "Default"}
+          </button>
+
           <button
             onClick={handleRunSelfTest}
             disabled={isRunningTest}

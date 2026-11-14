@@ -9,6 +9,7 @@ import { CountUpNumber } from "@/components/motion/CountUpNumber";
 import { DecryptedText } from "@/components/motion/DecryptedText";
 import { formatArchetype, formatProficiency } from "@/lib/format";
 import careersCatalogue from "@/data/careers.json";
+import skillsCatalogue from "@/data/skills.json";
 
 export function ValidatedStage() {
   const { state, dispatch } = useSkillPath();
@@ -95,15 +96,31 @@ export function ValidatedStage() {
           </div>
         </div>
 
-        {/* Expandable Formula Breakdown */}
+        {/* Learner Portfolio & Provenance Context */}
+        <div className="border border-[var(--rule)] bg-[var(--surface)] p-4 text-[12px] space-y-2">
+          <div className="flex items-center justify-between font-semibold text-[var(--ink)]">
+            <span>Learner Portfolio Provenance: {state.background.name} ({state.background.educationLevel})</span>
+            <span className="font-mono text-[11px] text-[var(--pencil)]">VERIFIED CONTEXT</span>
+          </div>
+          <p className="text-[var(--pencil)] font-serif-reading leading-relaxed">
+            Prior certifications: <strong>{state.background.priorCertifications?.join(", ") || "None"}</strong>.{" "}
+            Documented projects: <strong>{state.background.projects?.map((p) => p.name).join("; ") || "Independent software applications"}</strong>.{" "}
+            Targeting <strong>{targetCareer?.title || state.background.targetCareerId}</strong> with {state.background.weeklyLearningHours} hours/week commitment.
+          </p>
+        </div>
+
+        {/* How this was calculated: Expandable Calibration & Readiness Engine Panel */}
         {showFormula && (
-          <div className="border border-[var(--rule)] bg-[var(--surface-recessed)] p-4 text-[12px] space-y-2">
-            <div className="font-semibold text-[var(--ink)]">Deterministic Readiness Formula:</div>
-            <div className="font-mono bg-[var(--paper)] p-2 border border-[var(--rule)] text-[11px] overflow-x-auto text-[var(--ink)]">
-              Readiness = sum(weight_i * min(validatedRank_i / targetRank_i, 1.0)) / sum(weight_i) * 100
+          <div className="border border-[var(--rule)] bg-[var(--surface-recessed)] p-4 text-[12px] space-y-3">
+            <div className="font-semibold text-[var(--ink)]">How Career Readiness & Calibration Were Calculated:</div>
+            <div className="font-mono bg-[var(--paper)] p-2.5 border border-[var(--rule)] text-[11px] overflow-x-auto text-[var(--ink)] space-y-1">
+              <div>1. Readiness = Sum(Weight_i * MatchRatio_i) / Sum(Weight_i) * 100</div>
+              <div>2. MatchRatio = min(1.0, ValidatedRank / RequiredRank) - (0.15 if critical topic failed)</div>
+              <div>3. Cognitive Tier Weights: Syntax Recall (1x), Code Tracing (2x), Scenario Debugging (3x)</div>
+              <div>4. Latency Guard: Intermediate/Advanced answers &lt; 4000ms flag rapid guessing and cap confidence at Medium</div>
             </div>
             <div className="text-[var(--pencil)] font-serif-reading">
-              Python (Weight 4, Rank 2/2 = 1.0) + HTML (Weight 2, Rank 1/1 = 1.0) + SQL (Weight 4, Rank 1/2 = 0.5) = (4 + 2 + 2) / 19 = ~42% overall readiness across Full Stack benchmark requirements.
+              Current benchmark calculation: Python (Weight 4, Rank 2/2 = 1.0) + HTML (Weight 2, Rank 1/1 = 1.0) + SQL (Weight 4, Rank 1/2 = 0.5) = (4 + 2 + 2) / 19 = 42% overall readiness across Full Stack benchmark requirements.
             </div>
           </div>
         )}
@@ -171,6 +188,11 @@ export function ValidatedStage() {
                         : isZero
                         ? "Calibrated mastery"
                         : "Hidden strength"}
+                    </span>
+
+                    {/* Coverage Honesty Indicator */}
+                    <span className="px-2 py-0.5 text-[11px] font-mono border border-[var(--rule)] bg-[var(--surface-recessed)] text-[var(--ink)]">
+                      Assessed on {s.verifiedTopics.length + s.weakTopics.length} of {skillsCatalogue.find((c) => c.id === s.skillId)?.microTopics.length || 0} micro-topics
                     </span>
                   </div>
 

@@ -14,6 +14,12 @@ export function ProfileStage() {
   const [educationLevel, setEducationLevel] = useState(state.background.educationLevel);
   const [fieldOfStudy, setFieldOfStudy] = useState(state.background.fieldOfStudy);
   const [hasPriorProjects, setHasPriorProjects] = useState(state.background.hasPriorProjects);
+  const [certifications, setCertifications] = useState(
+    state.background.priorCertifications?.join(", ") || "CS50x Harvard"
+  );
+  const [interests, setInterests] = useState(
+    state.background.interests?.join(", ") || "Distributed systems, web performance, data visualization"
+  );
   const [weeklyHours, setWeeklyHours] = useState(state.background.weeklyLearningHours);
   const [targetCareerId, setTargetCareerId] = useState(state.background.targetCareerId);
 
@@ -27,6 +33,14 @@ export function ProfileStage() {
       educationLevel,
       fieldOfStudy,
       hasPriorProjects,
+      priorCertifications: certifications
+        .split(",")
+        .map((c) => c.trim())
+        .filter(Boolean),
+      interests: interests
+        .split(",")
+        .map((i) => i.trim())
+        .filter(Boolean),
       weeklyLearningHours: weeklyHours,
       targetCareerId,
     };
@@ -113,6 +127,32 @@ export function ProfileStage() {
                 Has built independent software projects
               </label>
             </div>
+
+            <div>
+              <label className="block text-[12px] font-medium text-[var(--ink)] mb-1">
+                Prior Certifications & Credentials
+              </label>
+              <input
+                type="text"
+                value={certifications}
+                onChange={(e) => setCertifications(e.target.value)}
+                placeholder="e.g. CS50x Harvard, AWS Cloud Practitioner"
+                className="w-full px-3 py-2 border border-[var(--rule)] bg-[var(--paper)] text-[var(--ink)] rounded-[4px] focus:outline-none focus:border-[var(--viridian)] text-[13px]"
+              />
+            </div>
+
+            <div>
+              <label className="block text-[12px] font-medium text-[var(--ink)] mb-1">
+                Technical Domains of Interest
+              </label>
+              <input
+                type="text"
+                value={interests}
+                onChange={(e) => setInterests(e.target.value)}
+                placeholder="e.g. Distributed backends, SQL indexing, ML inference"
+                className="w-full px-3 py-2 border border-[var(--rule)] bg-[var(--paper)] text-[var(--ink)] rounded-[4px] focus:outline-none focus:border-[var(--viridian)] text-[13px]"
+              />
+            </div>
           </div>
         </div>
 
@@ -178,10 +218,10 @@ export function ProfileStage() {
                   <div className="flex items-start justify-between gap-2">
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className={`w-3.5 h-3.5 rounded-full border flex items-center justify-center ${
+                        <span className={`w-3.5 h-3.5 rounded-[50%] border flex items-center justify-center ${
                           isSelected ? "border-[var(--ink)] bg-[var(--ink)]" : "border-[var(--pencil)]"
                         }`}>
-                          {isSelected && <span className="w-1.5 h-1.5 rounded-full bg-[var(--surface)]" />}
+                          {isSelected && <span className="w-1.5 h-1.5 rounded-[50%] bg-[var(--surface)]" />}
                         </span>
                         <span className="text-[14px] font-bold text-[var(--ink)]">
                           {career.title}
@@ -206,6 +246,10 @@ export function ProfileStage() {
                         </span>
                       );
                     })}
+                  </div>
+
+                  <div className="mt-2 pl-5.5 text-[11px] text-[var(--pencil)] font-serif-reading">
+                    Note: Supplementary tools (e.g., Git version control, Docker containers) are documented as unassessed in this core calibration prototype.
                   </div>
                 </div>
               );
